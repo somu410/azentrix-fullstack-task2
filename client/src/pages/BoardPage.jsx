@@ -23,7 +23,7 @@ const BoardPage = () => {
     fetchBoard();
     fetchCards();
 
-    socketRef.current = io('http://localhost:5000');
+    socketRef.current = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
     socketRef.current.emit('joinBoard', id);
 
     socketRef.current.on('cardCreated', (card) => {
